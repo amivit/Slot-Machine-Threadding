@@ -19,7 +19,7 @@ namespace threadtest
 
         public void StartReel()
         {
-            while (Run == true)
+            while (Run)
             {
                 for (int i = 0; i <= 4; i++)
                 {
