@@ -19,14 +19,11 @@ namespace threadtest
             bool jackpot = false;
             foreach (Reel reels in _reelsList)
             {
-                if (!reels.Run)
+                for (int i = 1; i < _reelsList.Count; i++)
                 {
-                    for (int i = 1; i < _reelsList.Count; i++)
-                    {
-                        Reel reel = _reelsList[i];
-                        int tmp = reel.Resultat;
-                        jackpot = _reelsList[0].Resultat == tmp;
-                    }
+                    //Reel reel = _reelsList[i];
+                    int tmp = _reelsList[i].Resultat;
+                    jackpot = _reelsList[0].Resultat == tmp;
                 }
             }
             return jackpot;

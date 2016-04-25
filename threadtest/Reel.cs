@@ -14,23 +14,14 @@ namespace threadtest
             _rnd = rnd;
             _name = name;
             Run = true;
-            StartReel();
+            //StartReel();
         }
 
         public void StartReel()
         {
-            while (Run)
-            {
-                for (int i = 0; i <= 4; i++)
-                {
-                    if (i == 4)
-                    {
-                        Console.WriteLine("{0} finished at: {1}", _name, Resultat);
-                        Run = false;
-                    }
-                    Resultat = _rnd.Next(1, 9);
-                }
-            }
+            Run = true;
+            Resultat = _rnd.Next(1, 9);
+            Console.WriteLine("{0} finished at: {1}", _name, Resultat);
         }
     }
 }

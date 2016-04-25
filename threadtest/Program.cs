@@ -19,14 +19,14 @@ namespace threadtest
             var thread2 = new Thread(reel2.StartReel);
             var thread3 = new Thread(reel3.StartReel);
             var threadsList = new List<Thread> { thread1, thread2, thread3 }; // Throw them into a list
-            var slotMachine = new ReelsContainer(reelsList, threadsList); // Throw list and threads into slot machine
 
-            StartSlotMachine(slotMachine); // Begin!
+            var slotMachine = new ReelsContainer(reelsList, threadsList); // Throw list and threads into slot machine
+            StartSlotMachine(slotMachine, reelsList); // Begin!
         }
 
-        private static void StartSlotMachine(ReelsContainer slotMachine)
+        private static void StartSlotMachine(ReelsContainer slotMachine, List<Reel> reelsList)
         {
-            slotMachine.StartThreads();
+            //            slotMachine.StartThreads();
             while (true)
             {
                 Thread.Sleep(1000);
@@ -36,13 +36,19 @@ namespace threadtest
                 {
                     Console.WriteLine("JACKPOT! Press any key to start new threads and play again");
                     Console.ReadLine();
-                    slotMachine.StartThreads();
+                    foreach (var reel in reelsList)
+                    {
+                        reel.StartReel();
+                    }
                 }
                 else
                 {
                     Console.WriteLine("No jackpot. Press any key to start new threads and try again");
                     Console.ReadLine();
-                    slotMachine.StartThreads();
+                    foreach (var reel in reelsList)
+                    {
+                        reel.StartReel();
+                    }
                 }
             }
         }
